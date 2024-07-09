@@ -12,6 +12,7 @@
 
 ## 基本用法
 
+
 通过`type`设置悬浮按钮触发器的类型，`position`设置悬浮按钮触发器的位置，`direction`设置动作按钮的打开方向，`disabled`设置悬浮按钮是否禁用。
 
 ```html
@@ -82,19 +83,18 @@ const active = ref<boolean>(false)
 
 ## Attributes
 
-| 参数           | 说明                               | 类型         | 可选值                                                                                    | 默认值                                         | 最低版本         |
-| -------------- | ---------------------------------- | ------------ | ----------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------------- |
-| v-model:active | 是否激活                           | boolean      | -                                                                                         | false                                          | 0.1.57           |
-| type           | 类型                               | FabType      | 'primary' &#124; 'success' &#124; 'info' &#124; 'warning' &#124; 'error' &#124; 'default' | 'primary'                                      | 0.1.57           |
-| position       | 悬浮按钮位置                       | FabPosition  | 'left-top' &#124; 'right-top' &#124; 'left-bottom' &#124; 'right-bottom'                  | 'right-bottom'                                 | 0.1.57           |
-| draggable      | 按钮能否拖动                       | boolean      |                                                                                           | false                                          | 1.2.19           |
-| direction      | 悬浮按钮菜单弹出方向               | FabDirection | 'top' &#124; 'right' &#124; 'bottom' &#124; 'left'                                        | 'top'                                          | 0.1.57           |
-| disabled       | 是否禁用                           | boolean      | -                                                                                         | false                                          | 0.1.57           |
-| inactiveIcon   | 悬浮按钮未展开时的图标             | string       | -                                                                                         | 'add'                                          | 0.1.57           |
-| activeIcon     | 悬浮按钮展开时的图标               | string       | -                                                                                         | 'close'                                        | 0.1.57           |
-| zIndex         | 自定义悬浮按钮层级                 | number       | -                                                                                         | 99                                             | 0.1.57           |
-| gap            | 自定义悬浮按钮与可视区域边缘的间距 | FabGap       | -                                                                                         | \{ top: 16, left: 16, right: 16, bottom: 16 \} | $LOWEST_VERSION$ |
-| customStyle    | 自定义样式                         | string       | -                                                                                         | ''                                             | 0.1.57           |
+| 参数           | 说明                   | 类型         | 可选值                                                                                    | 默认值         | 最低版本 |
+| -------------- | ---------------------- | ------------ | ----------------------------------------------------------------------------------------- | -------------- | -------- |
+| v-model:active | 是否激活               | boolean      | -                                                                                         | false          | 0.1.57   |
+| type           | 类型                   | FabType      | 'primary' &#124; 'success' &#124; 'info' &#124; 'warning' &#124; 'error' &#124; 'default' | 'primary'      | 0.1.57   |
+| position       | 悬浮按钮位置           | FabPosition  | 'left-top' &#124; 'right-top' &#124; 'left-bottom' &#124; 'right-bottom'                  | 'right-bottom' | 0.1.57   |
+| draggable      | 按钮能否拖动           | boolean      |                                                                                           | false          | 1.2.19   |
+| direction      | 悬浮按钮菜单弹出方向   | FabDirection | 'top' &#124; 'right' &#124; 'bottom' &#124; 'left'                                        | 'top'          | 0.1.57   |
+| disabled       | 是否禁用               | boolean      | -                                                                                         | false          | 0.1.57   |
+| inactiveIcon   | 悬浮按钮未展开时的图标 | string       | -                                                                                         | 'add'          | 0.1.57   |
+| activeIcon     | 悬浮按钮展开时的图标   | string       | -                                                                                         | 'close'        | 0.1.57   |
+| zIndex         | 自定义悬浮按钮层级     | number       | -                                                                                         | 99             | 0.1.57   |
+| customStyle    | 自定义样式             | string       | -                                                                                         | ''             | 0.1.57   |
 
 ## 外部样式类
 

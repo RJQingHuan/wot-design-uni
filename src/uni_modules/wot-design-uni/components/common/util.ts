@@ -1,3 +1,7 @@
+import { AbortablePromise } from './AbortablePromise'
+
+type NotUndefined<T> = T extends undefined ? never : T
+
 /**
  * 生成uuid
  * @returns string
@@ -330,7 +334,7 @@ export function isNumber(value: any): value is number {
  */
 export function isPromise(value: unknown): value is Promise<any> {
   // 先将 value 断言为 object 类型
-  if (isObj(value)) {
+  if (isObj(value) && isDef(value)) {
     // 然后进一步检查 value 是否具有 then 和 catch 方法，并且它们是函数类型
     return isFunction((value as Promise<any>).then) && isFunction((value as Promise<any>).catch)
   }
@@ -344,6 +348,14 @@ export function isPromise(value: unknown): value is Promise<any> {
  */
 export function isBoolean(value: any): value is boolean {
   return typeof value === 'boolean'
+}
+
+export function isUndefined(value: any): value is undefined {
+  return typeof value === 'undefined'
+}
+
+export function isNotUndefined<T>(value: T): value is NotUndefined<T> {
+  return !isUndefined(value)
 }
 
 /**
@@ -417,7 +429,7 @@ export function objToStyle(styles: Record<string, any> | Record<string, any>[]):
 }
 
 export const requestAnimationFrame = (cb = () => {}) => {
-  return new Promise((resolve) => {
+  return new AbortablePromise((resolve) => {
     const timer = setInterval(() => {
       clearInterval(timer)
       resolve(true)
@@ -645,6 +657,40 @@ export const getPropByPath = (obj: any, path: string): any => {
 export const isDate = (val: unknown): val is Date => Object.prototype.toString.call(val) === '[object Date]' && !Number.isNaN((val as Date).getTime())
 
 /**
+ * 检查提供的URL是否为视频链接。
+ * @param url 需要检查的URL字符串。
+ * @returns 返回一个布尔值，如果URL是视频链接则为true，否则为false。
+ */
+export function isVideoUrl(url: string): boolean {
+  // 使用正则表达式匹配视频文件类型的URL
+  const videoRegex = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv|video)/i
+  return videoRegex.test(url)
+}
+
+/**
+ * 检查提供的URL是否为图片URL。
+ * @param url 待检查的URL字符串。
+ * @returns 返回一个布尔值，如果URL是图片格式，则为true；否则为false。
+ */
+export function isImageUrl(url: string): boolean {
+  // 使用正则表达式匹配图片URL
+  const imageRegex = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg|image)/i
+  return imageRegex.test(url)
+}
+
+/**
  * 判断环境是否是H5
  */
 export const isH5 = process.env.UNI_PLATFORM === 'h5'
+
+/**
+ * 剔除对象中的某些属性
+ * @param obj
+ * @param predicate
+ * @returns
+ */
+export function omitBy<O extends Record<string, any>>(obj: O, predicate: (value: any, key: keyof O) => boolean): Partial<O> {
+  const newObj = deepClone(obj)
+  Object.keys(newObj).forEach((key) => predicate(newObj[key], key) && delete newObj[key]) // 遍历对象的键，删除值为不满足predicate的字段
+  return newObj
+}
