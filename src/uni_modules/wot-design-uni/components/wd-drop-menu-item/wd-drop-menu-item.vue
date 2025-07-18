@@ -1,16 +1,19 @@
 <template>
-  <view v-if="showWrapper" :class="`wd-drop-item  ${customClass}`" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
+  <view
+    v-if="showWrapper"
+    :class="`wd-drop-item  ${customClass}`"
+    :style="`pointer-events: none; z-index: ${zIndex}; ${positionStyle};${customStyle}`"
+  >
     <wd-popup
       v-model="showPop"
       :z-index="zIndex"
       :duration="duration"
       :position="position"
-      :custom-style="`position: absolute; max-height: 80%;${customPopupStyle}`"
+      :custom-style="`position: absolute; pointer-events: auto; max-height: 80%;${customPopupStyle}`"
       :custom-class="customPopupClass"
-      modal-style="position: absolute;"
-      :modal="modal"
+      :modal="false"
       :close-on-click-modal="false"
-      @click-modal="closeOnClickModal && close()"
+      :root-portal="rootPortal"
       @before-enter="beforeEnter"
       @after-enter="afterEnter"
       @before-leave="beforeLeave"
@@ -30,8 +33,7 @@
           <wd-icon
             v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue"
             :name="iconName"
-            size="20px"
-            :class="`wd-drop-item__icon ${customIcon}`"
+            :custom-class="`wd-drop-item__icon ${customIcon}`"
           />
         </view>
       </view>
@@ -63,15 +65,20 @@ import { isDef, isFunction } from '../common/util'
 import { dorpMenuItemProps, type DropMenuItemExpose } from './types'
 
 const props = defineProps(dorpMenuItemProps)
-const emit = defineEmits(['change', 'update:modelValue', 'open', 'opened', 'closed', 'close'])
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | number): void
+  (e: 'change', event: { value: string | number; selectedItem: Record<string, any> }): void
+  (e: 'open'): void
+  (e: 'opened'): void
+  (e: 'close'): void
+  (e: 'closed'): void
+}>()
 
 const queue = inject<Queue | null>(queueKey, null)
 const showWrapper = ref<boolean>(false)
 const showPop = ref<boolean>(false)
 const position = ref<PopupType>()
 const zIndex = ref<number>(12)
-const modal = ref<boolean>(true)
-const closeOnClickModal = ref<boolean>(true)
 const duration = ref<number>(0)
 
 const { parent: dropMenu } = useParent(DROP_MENU_KEY)
@@ -128,9 +135,10 @@ function choose(index: number) {
   if (props.disabled) return
   const { valueKey } = props
   const item = props.options[index]
-  emit('update:modelValue', item[valueKey] !== '' && item[valueKey] !== undefined ? item[valueKey] : item)
+  const newValue = item[valueKey] !== undefined ? item[valueKey] : item
+  emit('update:modelValue', newValue)
   emit('change', {
-    value: item[valueKey] !== '' && item[valueKey] !== undefined ? item[valueKey] : item,
+    value: newValue,
     selectedItem: item
   })
   close()
@@ -178,12 +186,9 @@ function handleOpen() {
   showWrapper.value = true
   showPop.value = true
   if (dropMenu) {
-    modal.value = Boolean(dropMenu.props.modal)
     duration.value = Number(dropMenu.props.duration)
-    closeOnClickModal.value = Boolean(dropMenu.props.closeOnClickModal)
     position.value = dropMenu.props.direction === 'down' ? 'top' : 'bottom'
   }
-  emit('open')
 }
 
 function toggle() {

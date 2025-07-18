@@ -79,8 +79,8 @@ export default {
   pagination: {
     prev: 'Previous',
     next: 'Next',
-    page: (value: number) => `Page：${value}`,
-    total: (total: number) => `Total：${total}`,
+    page: (value: number) => `Page: ${value}`,
+    total: (total: number) => `Total: ${total}`,
     size: (size: number) => `${size}/page`
   },
   picker: {
@@ -126,6 +126,8 @@ export default {
   },
   signature: {
     confirmText: 'OK',
-    clearText: 'Clear'
+    clearText: 'Clear',
+    revokeText: 'Undo',
+    restoreText: 'Restore'
   }
 }

@@ -78,6 +78,28 @@ const value = ref<number>(Date.now())
 const value4 = ref<string>('09:20')
 ```
 
+## time 类型（带秒）
+
+`time` 类型设置 `use-second` 属性可以展示时分秒，绑定值为 `HH:mm:ss` 格式。
+
+```html
+<wd-datetime-picker type="time" v-model="value" label="时分秒" use-second />
+```
+```typescript
+const value = ref<string>('09:20:30')
+```
+
+## datetime 类型（带秒）
+
+`datetime` 类型设置 `use-second` 属性可以展示年月日时分秒，绑定值为时间戳。
+
+```html
+<wd-datetime-picker type="datetime" v-model="value" label="年月日时分秒" use-second />
+```
+```typescript
+const value = ref<number>(Date.now())
+```
+
 ## 修改展示格式
 
 
@@ -204,10 +226,10 @@ function handleConfirm({ value }) {
 
 ## 唤起项插槽
 
-开启 `use-default-slot` ，设置默认插槽修改唤起picker组件的形式。
+设置默认插槽修改唤起picker组件的形式。
 
 ```html
-<wd-datetime-picker  v-model="value" use-default-slot>
+<wd-datetime-picker  v-model="value">
   <wd-button>插槽唤起</wd-button>
 </wd-datetime-picker>
 ```
@@ -285,8 +307,8 @@ const displayFormatTabLabel = (items) => {
 | label-width | 设置左侧标题宽度 | string | - | 33% | - |
 | error | 是否为错误状态，错误状态时右侧内容为红色 | boolean | - | false | - |
 | align-right | 选择器的值靠右展示 | boolean | - | false | - |
-| use-label-slot | label 使用插槽 | boolean | - | false | - |
-| use-default-slot | 使用默认插槽 | boolean | - | false | - |
+| <s>use-label-slot</s> | <s>label 使用插槽</s>，已废弃，直接使用label插槽即可 | boolean | - | false | - |
+| <s>use-default-slot</s> | <s>使用默认插槽</s>，已废弃，直接使用默认插槽即可 | boolean | - | false | - |
 | before-confirm | 确定前校验函数，接收 (value, resolve, picker) 参数，通过 resolve 继续执行 picker，resolve 接收1个boolean参数 | function | - | - | - |
 | close-on-click-modal | 点击遮罩是否关闭 | boolean | - | true | - |
 | z-index | 弹窗层级 | number | - | 15 | - |
@@ -295,6 +317,9 @@ const displayFormatTabLabel = (items) => {
 | prop | 表单域 `model` 字段名，在使用表单校验功能的情况下，该属性是必填的 | string | - | - | - |
 | rules | 表单验证规则，结合`wd-form`组件使用	 | `FormItemRule []`	 | - | `[]` | - |
 | immediate-change | 是否在手指松开时立即触发picker-view的 change 事件。若不开启则会在滚动动画结束后触发 change 事件，1.2.25版本起提供，仅微信小程序和支付宝小程序支持。 | boolean | - | false | 1.2.25 |
+| use-second | 是否显示秒选择，仅在 time 和 datetime 类型下生效 | boolean | - | false | 1.10.0 |
+| clearable | 显示清空按钮 | boolean | - | false | $LOWEST_VERSION$ |
+| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | $LOWEST_VERSION$ |
 
 ### FormItemRule 数据结构
 
@@ -312,6 +337,7 @@ const displayFormatTabLabel = (items) => {
 | confirm | 点击右侧按钮触发 | `{ value }`, value 为当前选中日期的时间戳，'time' 类型则为字符串 | - |
 | cancel | 点击左侧按钮触发 | - | - |
 | toggle | 在区域选择模式下，tab标签切换时触发 | 切换到当前picker选中的值 | - |
+| clear | 点击清空按钮触发 | - | $LOWEST_VERSION$ |
 
 ## Methods
 

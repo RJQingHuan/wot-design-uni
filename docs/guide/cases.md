@@ -5,41 +5,12 @@
 Wot UI 已被很多公司和团队在生产环境使用，下面是一些优秀的案例：
 
 <div class="cases-container">
-  <el-card shadow="hover">
+  <el-card v-for="(item, index) in cases" :key="index" shadow="hover">
     <template #header>
-      <span class="case-title">调剂宝</span>
+      <span class="case-title">{{ item.name }}</span>
+      <span class="case-description">{{ item.description }}</span>
     </template>
-    <el-image src="/cases/tiaojibao.jpg" />
-  </el-card>
-  <el-card shadow="hover">
-    <template #header>
-      <span class="case-title">BodyLang体态评估</span>
-    </template>
-    <el-image src="/cases/BodyLang.png" />
-  </el-card>
-  <el-card shadow="hover">
-    <template #header>
-      <span class="case-title">尘才咨询</span>
-    </template>
-    <el-image src="/cases/chencaizixun.png" />
-  </el-card>
-  <el-card shadow="hover">
-    <template #header>
-      <span class="case-title">日常计数器</span>
-    </template>
-    <el-image src="/cases/richangjishuqi.jpg" />
-  </el-card> 
-  <el-card shadow="hover">
-    <template #header>
-      <span class="case-title">蜗趣记账</span>
-    </template>
-    <el-image src="/cases/woqujizhang.jpg" />
-  </el-card> 
-  <el-card shadow="hover">
-    <template #header>
-      <span class="case-title">薪资速算器</span>
-    </template>
-    <el-image src="/cases/salary-calculator.jpg" />
+    <el-image :src="item.image" />
   </el-card>
 </div>
 
@@ -56,6 +27,12 @@ Wot UI 已被很多公司和团队在生产环境使用，下面是一些优秀�
   font-weight: 500;
 }
 
+.case-description {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
 :deep(.el-card__body .el-image) {
   width: 100%;
   border-radius: 4px;
@@ -63,4 +40,7 @@ Wot UI 已被很多公司和团队在生产环境使用，下面是一些优秀�
 </style>
 
 <script setup>
+import { useCaseData } from '../.vitepress/theme/composables/cases'
+const { data:cases } = useCaseData()
 </script>
+

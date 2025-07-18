@@ -57,7 +57,7 @@ const rootStyle = computed(() => {
     style['border-radius'] = addUnit(props.radius)
     style['overflow'] = 'hidden'
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return `${objToStyle(style)}${props.customStyle}`
 })
 
 const rootClass = computed(() => {
@@ -73,7 +73,7 @@ function handleError(event: any) {
 function handleClick(event: MouseEvent) {
   if (props.enablePreview && props.src && status.value == 'success') {
     uni.previewImage({
-      urls: [props.src]
+      urls: [props.previewSrc || props.src]
     })
   }
   emit('click', event)

@@ -1,6 +1,123 @@
 # 更新日志 
 
 
+## [1.10.0](https://github.com/Moonofweisheng/wot-design-uni/compare/v1.9.1...v1.10.0) (2025-06-29)
+
+
+### ✏️ Documentation | 文档
+
+* ✏️  调整微信小程序演示demo激励按钮的文案以应对微信审核 ([06323a9](https://github.com/Moonofweisheng/wot-design-uni/commit/06323a9b3228299fa9cf4ff6cd826514ced1dc32))
+* ✏️  简化组件库通用名称为 WotUI ([8177978](https://github.com/Moonofweisheng/wot-design-uni/commit/817797801de1228d39ff399c7792d76c2652e94d))
+* ✏️  添加 WotUI 加群凭证相关介绍 ([341b9e1](https://github.com/Moonofweisheng/wot-design-uni/commit/341b9e1c1e98699510bbdc4587782b3647d2c4ba))
+* ✏️  修正示例 demo 源码链接地址 ([1ccdb4a](https://github.com/Moonofweisheng/wot-design-uni/commit/1ccdb4a7468ce7984ac4f17305212aebc54f62c3)), closes [#1045](https://github.com/Moonofweisheng/wot-design-uni/issues/1045)
+* ✏️  优化加群文档使其更加清晰明确 ([207dfb8](https://github.com/Moonofweisheng/wot-design-uni/commit/207dfb8c9bbf4434ec51e186886ad8dba6289153))
+* ✏️  优秀案例改为取线上资源 ([053485b](https://github.com/Moonofweisheng/wot-design-uni/commit/053485b470419b5a451b73aec0dc03d12b7dde56))
+* ✏️  update cases ([f1ad2fa](https://github.com/Moonofweisheng/wot-design-uni/commit/f1ad2fa05efba00d89958adba5ca967eead01cfe))
+
+
+### ✨ Features | 新功能
+
+* ✨ DatetimePicker 支持time和date-time类型下配置选择到秒 ([#1117](https://github.com/Moonofweisheng/wot-design-uni/issues/1117)) ([f2e8fda](https://github.com/Moonofweisheng/wot-design-uni/commit/f2e8fdad8026b4b8ce5d11a2e80d5a565031cdc5)), closes [#844](https://github.com/Moonofweisheng/wot-design-uni/issues/844)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复 DropDownItem 自定义样式类 CustomIcon 无效的问题 ([cb408f5](https://github.com/Moonofweisheng/wot-design-uni/commit/cb408f553a2e5d84225b5dcdb447dd784992aa6b)), closes [#1119](https://github.com/Moonofweisheng/wot-design-uni/issues/1119)
+* 🐛 修复 DropMenu 设置 Modal 无效的问题 ([#1125](https://github.com/Moonofweisheng/wot-design-uni/issues/1125)) ([eddbd5d](https://github.com/Moonofweisheng/wot-design-uni/commit/eddbd5d22e6cb413e5bf06a642f60f6e081a9074)), closes [#1121](https://github.com/Moonofweisheng/wot-design-uni/issues/1121)
+* 🐛 修复 Input、Textarea、Search 组件设置清空后不聚焦时无法触发失焦事件的问题 ([#1046](https://github.com/Moonofweisheng/wot-design-uni/issues/1046)) ([33b5565](https://github.com/Moonofweisheng/wot-design-uni/commit/33b556546a03e240cfcb3662286cc6dc70b70263))
+* 🐛 修复 Slider 处理边界值异常的问题，优化样式和事件处理逻辑 ([#1050](https://github.com/Moonofweisheng/wot-design-uni/issues/1050)) ([0d7ed81](https://github.com/Moonofweisheng/wot-design-uni/commit/0d7ed8129c623c0b423fe8da6814417417ea3114)), closes [#1023](https://github.com/Moonofweisheng/wot-design-uni/issues/1023)
+* 🐛 修复 Toast 英文断行样式错误问题 ([#1067](https://github.com/Moonofweisheng/wot-design-uni/issues/1067)) ([09dde62](https://github.com/Moonofweisheng/wot-design-uni/commit/09dde6278ed9bb0a57709c15ea4dff8da6e786cd))
+* 🐛 修复 wd-img-cropper 组件在微信小程序中旋转图片后操作卡顿的问题 ([#1112](https://github.com/Moonofweisheng/wot-design-uni/issues/1112)) ([50782a1](https://github.com/Moonofweisheng/wot-design-uni/commit/50782a16717d483f4dc7095e2f6096591999df01))
+* 🐛 修复 wd-slider 滑块不跟手的问题 ([#1114](https://github.com/Moonofweisheng/wot-design-uni/issues/1114)) ([e3dc36e](https://github.com/Moonofweisheng/wot-design-uni/commit/e3dc36e832a74029348a859adb53f06054e9eea6))
+* 🐛 修复NumberKeyboard组件使用 title 插槽未传入关闭文本时不展示头部的问题 ([#1060](https://github.com/Moonofweisheng/wot-design-uni/issues/1060)) ([875e072](https://github.com/Moonofweisheng/wot-design-uni/commit/875e072b3ea8dff270cb2214f94b95e03fa210db)), closes [#760](https://github.com/Moonofweisheng/wot-design-uni/issues/760)
+* 🐛 优化 InputNumbe 处理中间状态值的逻辑，支持配置不立即响应输入变化 ([#1116](https://github.com/Moonofweisheng/wot-design-uni/issues/1116)) ([ff99b22](https://github.com/Moonofweisheng/wot-design-uni/commit/ff99b22a6930ea500539f403f23d46cd836e8bca))
+* 修复 wd-upload 组件的 formData 属性的 ts 类型为 void 的问题 ([#1106](https://github.com/Moonofweisheng/wot-design-uni/issues/1106)) ([6026137](https://github.com/Moonofweisheng/wot-design-uni/commit/60261374acb99f64298c724e1f8d1df3061bd85a))
+
+### [1.9.1](https://github.com/Moonofweisheng/wot-design-uni/compare/v1.9.0...v1.9.1) (2025-05-08)
+
+
+### ✏️ Documentation | 文档
+
+* ✏️  处理小程序超包 ([08e9ee1](https://github.com/Moonofweisheng/wot-design-uni/commit/08e9ee1cb366e4c5ec87d989795d58399cb1df32))
+* ✏️  修复部分组件二维码显示异常的问题 ([eea9bf7](https://github.com/Moonofweisheng/wot-design-uni/commit/eea9bf7aac36cfd9b7b476392c35e3db097e4891))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复 Upload 开启 multiple 后只能成功上传最后一个文件的问题 ([#1044](https://github.com/Moonofweisheng/wot-design-uni/issues/1044)) ([f2ae0d3](https://github.com/Moonofweisheng/wot-design-uni/commit/f2ae0d3aacab3b95b48f623623c5bf1f9acecf18)), closes [#1043](https://github.com/Moonofweisheng/wot-design-uni/issues/1043)
+
+## [1.9.0](https://github.com/Moonofweisheng/wot-design-uni/compare/v1.8.0...v1.9.0) (2025-05-07)
+
+
+### ⚡ Performance Improvements | 性能优化
+
+* ⚡ 增强 wd-drop-menu 组件，优化遮罩层闪烁 ([#974](https://github.com/Moonofweisheng/wot-design-uni/issues/974)) ([f9605b7](https://github.com/Moonofweisheng/wot-design-uni/commit/f9605b71b667cfaad56b7b028d53ccff5112ddf8))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复 Curtain 幕帘组件 close 事件触发2次的问题 ([460a838](https://github.com/Moonofweisheng/wot-design-uni/commit/460a83802bad5b38d6e7063e481e510ed69dffb9)), closes [#894](https://github.com/Moonofweisheng/wot-design-uni/issues/894)
+* 🐛 修复 message-box 配合 layouts 使用全局 message-box 时，切换页面可能会显示上一次的 message-box 内容的问题 ([f137a63](https://github.com/Moonofweisheng/wot-design-uni/commit/f137a6313e45e65dd23a03ae88b304e07b1a377e))
+* 🐛 修复 Textarea 设置为 null 时，显示字数限制显示错误问题 ([#1004](https://github.com/Moonofweisheng/wot-design-uni/issues/1004)) ([60f2fe6](https://github.com/Moonofweisheng/wot-design-uni/commit/60f2fe61ae77e170e2c05e1b20d256ab107ee4db)), closes [#1003](https://github.com/Moonofweisheng/wot-design-uni/issues/1003)
+* 🐛 修复部分国际化文本不正确的问题 ([#970](https://github.com/Moonofweisheng/wot-design-uni/issues/970)) ([4319fa9](https://github.com/Moonofweisheng/wot-design-uni/commit/4319fa9badf3e3dd08218e8e90604c91c49b49c7))
+* 🐛 修复多个 ImgCropper 存在时生成图片异常的问题 ([1876fc3](https://github.com/Moonofweisheng/wot-design-uni/commit/1876fc3d0c21c2d9d9c45fe3096690a0bde46493))
+
+
+### ✨ Features | 新功能
+
+* ✨ 将 Tabbar 和 Badge 设置为标准盒子模型 ([#1036](https://github.com/Moonofweisheng/wot-design-uni/issues/1036)) ([7f2ccb2](https://github.com/Moonofweisheng/wot-design-uni/commit/7f2ccb2d372c412670bfe4ac833f8dc957d994e9))
+* ✨ 提供 useUpload hooks 用于便捷上传 ([#969](https://github.com/Moonofweisheng/wot-design-uni/issues/969)) ([49fe25a](https://github.com/Moonofweisheng/wot-design-uni/commit/49fe25a99bb0c60b3a81a11ef7eb06e762fb1d25))
+* ✨ 添加组合式API文档并提供相关API ([#972](https://github.com/Moonofweisheng/wot-design-uni/issues/972)) ([b852376](https://github.com/Moonofweisheng/wot-design-uni/commit/b85237643ce217c14a304e8477487acce327ed49))
+* ✨ 添加input props.type可选类型 ([#983](https://github.com/Moonofweisheng/wot-design-uni/issues/983)) ([91776bf](https://github.com/Moonofweisheng/wot-design-uni/commit/91776bf3de9bdd6c6954ecab8024dddbdcee7e48)), closes [#981](https://github.com/Moonofweisheng/wot-design-uni/issues/981)
+* ✨ 文档示例项目支持国际化切换 ([#992](https://github.com/Moonofweisheng/wot-design-uni/issues/992)) ([4ae9587](https://github.com/Moonofweisheng/wot-design-uni/commit/4ae9587d635c1ba80b8855d3b3d5a38939b1825c))
+* ✨ 移除 keyboard 虚拟键盘车牌号模式下不可用的 I、O 键 ([#1037](https://github.com/Moonofweisheng/wot-design-uni/issues/1037)) ([90c53d7](https://github.com/Moonofweisheng/wot-design-uni/commit/90c53d7e2c3208827433093023711c93610df7da)), closes [#1005](https://github.com/Moonofweisheng/wot-design-uni/issues/1005)
+* ✨ 引入 vitepress-plugin-llms 优化 AI 理解 ([#1034](https://github.com/Moonofweisheng/wot-design-uni/issues/1034)) ([901c754](https://github.com/Moonofweisheng/wot-design-uni/commit/901c7548fca2bc42c597bb5780769f05e63ede96))
+* ✨ 引入vitest做组件测试 ([7e84c5c](https://github.com/Moonofweisheng/wot-design-uni/commit/7e84c5c91f3c351922e976255dc97281c1fe371b))
+* ✨ grid-item添加hover-class ([#994](https://github.com/Moonofweisheng/wot-design-uni/issues/994)) ([dfaff53](https://github.com/Moonofweisheng/wot-design-uni/commit/dfaff531cb0a78ec1201f323c5d3326ca967c1e7))
+* ✨ ImgCropper 图片剪裁支持设置裁剪框宽高比 ([#973](https://github.com/Moonofweisheng/wot-design-uni/issues/973)) ([5a3f85d](https://github.com/Moonofweisheng/wot-design-uni/commit/5a3f85df6f1e3e54954754b832b0427b67559d58)), closes [#920](https://github.com/Moonofweisheng/wot-design-uni/issues/920)
+* ✨ Upload 上传组件支持根据扩展名过滤文件 ([#980](https://github.com/Moonofweisheng/wot-design-uni/issues/980)) ([51adb6b](https://github.com/Moonofweisheng/wot-design-uni/commit/51adb6b8a9911e8d64ef376b19a4aef900b52789)), closes [#796](https://github.com/Moonofweisheng/wot-design-uni/issues/796) [#581](https://github.com/Moonofweisheng/wot-design-uni/issues/581)
+
+
+### ✏️ Documentation | 文档
+
+* ✏️  文档中添加测试覆盖率徽标 ([4ae514c](https://github.com/Moonofweisheng/wot-design-uni/commit/4ae514c716f1c3b0cb2b05443b995eec4fb82b21))
+* ✏️  修复全局 closeOutside 影响 DropDown 异步开关的问题 ([49e5d63](https://github.com/Moonofweisheng/wot-design-uni/commit/49e5d63dd17b48c00648bcab05cb93e743ca43ab))
+* ✏️  移除 petercatai 聊天助手 ([5c77483](https://github.com/Moonofweisheng/wot-design-uni/commit/5c77483974189e8b22587407ff9baf484a5779da))
+* ✏️  优化 `WdConfigProvider` 文档，解决组件命名风格问题导致失效问题 ([#989](https://github.com/Moonofweisheng/wot-design-uni/issues/989)) ([0f693f9](https://github.com/Moonofweisheng/wot-design-uni/commit/0f693f9784224ee0949d4a7efc66985224bf0d5b))
+* ✏️  update cases ([a200337](https://github.com/Moonofweisheng/wot-design-uni/commit/a2003378636a25c253a8596f5afbbbcf6ad3e419))
+
+## [1.8.0](https://github.com/Moonofweisheng/wot-design-uni/compare/v1.7.1...v1.8.0) (2025-03-23)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复 DateTimePicker 区域选择时边界值处理错误的问题 ([230e09f](https://github.com/Moonofweisheng/wot-design-uni/commit/230e09ff2ac25550b0efc2628827b70162041aad))
+* 🐛 修复 drop-menu-item 有选项值为空字符串时导致新值错误并触发组件内部警告的问题 ([f63de5b](https://github.com/Moonofweisheng/wot-design-uni/commit/f63de5bd1d3453e844c058a9f185c0a5e56bcf67))
+* 🐛 修复在template中使用readonly无法通过vue-ts校验的问题 ([ee5b25f](https://github.com/Moonofweisheng/wot-design-uni/commit/ee5b25fbc36a24cab02576757226f26fb9e27777))
+* 🐛 修复input、textarea组件placeholder样式在微信小程序无效的问题 ([#944](https://github.com/Moonofweisheng/wot-design-uni/issues/944)) ([1ac115f](https://github.com/Moonofweisheng/wot-design-uni/commit/1ac115fdac310760e630e8745b438f96c6b88386)), closes [#943](https://github.com/Moonofweisheng/wot-design-uni/issues/943)
+* 🐛 修复textarea统计多码元字符长度错误的问题 ([#940](https://github.com/Moonofweisheng/wot-design-uni/issues/940)) ([f9d8523](https://github.com/Moonofweisheng/wot-design-uni/commit/f9d85232c4142f0c957fa3c829dd3321c7ad56e5)), closes [#933](https://github.com/Moonofweisheng/wot-design-uni/issues/933)
+* **picker:** clear selected value and options when columns is emptied ([496cb73](https://github.com/Moonofweisheng/wot-design-uni/commit/496cb732b1ab0e69517d629e147b673692631f98)), closes [#935](https://github.com/Moonofweisheng/wot-design-uni/issues/935)
+
+
+### ✨ Features | 新功能
+
+* ✨  Img 组件添加预览图片属性  ([#945](https://github.com/Moonofweisheng/wot-design-uni/issues/945)) ([34a4878](https://github.com/Moonofweisheng/wot-design-uni/commit/34a48783f37a56fb6ed7a77dd29ee5a406bf989a))
+* ✨ 废弃 DateTimePicker 开启插槽开关use-label-slot和use-default-slot ([8d9e5c6](https://github.com/Moonofweisheng/wot-design-uni/commit/8d9e5c66589f1b6eed5faa093f2c28cf2640f5b5))
+* ✨ 新增 InputNumber 组件支持长按加减功能 ([#910](https://github.com/Moonofweisheng/wot-design-uni/issues/910)) ([9437087](https://github.com/Moonofweisheng/wot-design-uni/commit/94370876e4ce91faec6e10db5e413dfa27d0f4c2))
+* ✨ 重构 Signature 签字板历史记录模式并添加压感模式和横屏示例 ([#967](https://github.com/Moonofweisheng/wot-design-uni/issues/967)) ([aad3e83](https://github.com/Moonofweisheng/wot-design-uni/commit/aad3e8332b4cb6a1f9c0a3c81e9fb7d5068f09b3))
+* ✨ Signature 添加历史记录和历史记录步长(包含文档添加、i18n、代码示例) ([#889](https://github.com/Moonofweisheng/wot-design-uni/issues/889)) ([10ec731](https://github.com/Moonofweisheng/wot-design-uni/commit/10ec731b8986f7bf5903a923fe7f1f7d78623ecf))
+* extend wd-fab component with 4 new positions and update docs ([6f12aa4](https://github.com/Moonofweisheng/wot-design-uni/commit/6f12aa4b04477a2b1f8535e272699333ceb0b9f6))
+
+
+### ✏️ Documentation | 文档
+
+* ✏️  接入 petercatai 聊天助手 ([34f0299](https://github.com/Moonofweisheng/wot-design-uni/commit/34f02997dd79f88de89da79791d5a6c056367e8a))
+* ✏️  添加优秀案例页面 ([ef7c98b](https://github.com/Moonofweisheng/wot-design-uni/commit/ef7c98bffb843129d872c8ebc6a1bbaf7d8437bf))
+* ✏️  新增优秀案例——随享小栈 ([2040230](https://github.com/Moonofweisheng/wot-design-uni/commit/2040230064989bf4816932870920f52ae0797bf2))
+* ✏️  修复 Navbar 文档部分标题显示 Tabbar 的问题 ([b4b4d59](https://github.com/Moonofweisheng/wot-design-uni/commit/b4b4d594fc29fe1f947b6ea7e8b5b90cc3f58013))
+* ✏️  修复部分文档拼写错误 ([#911](https://github.com/Moonofweisheng/wot-design-uni/issues/911)) ([15613b3](https://github.com/Moonofweisheng/wot-design-uni/commit/15613b393aaf750a85e03512c41ffed473471228))
+* fix drop-menu demo code type error ([#905](https://github.com/Moonofweisheng/wot-design-uni/issues/905)) ([0c32c29](https://github.com/Moonofweisheng/wot-design-uni/commit/0c32c29969a8fcb748409a17a06cf277202a18a7))
+
 ### [1.7.1](https://github.com/Moonofweisheng/wot-design-uni/compare/v1.7.0...v1.7.1) (2025-02-19)
 
 

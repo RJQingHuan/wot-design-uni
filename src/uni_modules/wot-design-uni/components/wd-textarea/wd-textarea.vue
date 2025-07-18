@@ -177,7 +177,11 @@ const isRequired = computed(() => {
 
 // 当前文本域文字长度
 const currentLength = computed(() => {
-  return String(formatValue(props.modelValue) || '').length
+  /**
+   * 使用Array.from处理多码元字符以获取正确的长度
+   * @link https://github.com/Moonofweisheng/wot-design-uni/issues/933
+   */
+  return Array.from(String(formatValue(props.modelValue))).length
 })
 
 const rootClass = computed(() => {
@@ -220,6 +224,7 @@ function initState() {
 }
 
 function formatValue(value: string | number) {
+  if (value === null || value === undefined) return ''
   const { maxlength, showWordLimit } = props
   if (showWordLimit && maxlength !== -1 && String(value).length > maxlength) {
     return value.toString().substring(0, maxlength)
@@ -228,10 +233,10 @@ function formatValue(value: string | number) {
 }
 
 async function handleClear() {
-  clearing.value = true
   focusing.value = false
   inputValue.value = ''
   if (props.focusWhenClear) {
+    clearing.value = true
     focused.value = false
   }
   await pause()

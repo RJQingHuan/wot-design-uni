@@ -21,7 +21,7 @@ export default {
 import { computed, ref, watch } from 'vue'
 import { isDef, objToStyle } from '../common/util'
 import { textProps } from './types'
-import { dayjs } from '../common/dayjs'
+import dayjs from '../../dayjs'
 
 // 获取组件的 props 和 emit 函数
 const props = defineProps(textProps)
@@ -72,7 +72,7 @@ const rootStyle = computed(() => {
   if (props.decoration) {
     rootStyle['text-decoration'] = `${props.decoration}`
   }
-  return `${objToStyle(rootStyle)};${props.customStyle}`
+  return `${objToStyle(rootStyle)}${props.customStyle}`
 })
 
 // 计算文本类名的函数
