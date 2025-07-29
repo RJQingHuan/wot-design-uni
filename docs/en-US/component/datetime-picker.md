@@ -197,6 +197,10 @@ Set the `align-right` property to display the picker's value aligned to the righ
 
 Set the `before-confirm` function, which will be executed when the user clicks the 'confirm' button. It receives `value` (string for time type, timestamp for others, array when picker is in range selection mode), `resolve`, and `picker` parameters. You can validate the `value` and use the `resolve` function to tell the component whether to confirm. `resolve` accepts a boolean value, `resolve(true)` means the option is approved, `resolve(false)` means the option is not approved, and the picker popup won't close when not approved. You can directly set properties like `loading` through the `picker` parameter.
 
+:::tip Note
+Before calling `resolve`, ensure that the `picker` parameter's `loading` state is set to `false`, otherwise the component's `@confirm` event cannot be triggered correctly.
+:::
+
 ```html
 <wd-toast></wd-toast>
 <wd-datetime-picker label="before-confirm" v-model="value" :before-confirm="beforeConfirm" @confirm="handleConfirm" />
@@ -298,6 +302,7 @@ const displayFormatTabLabel = (items) => {
 | minMinute | Minimum minute, effective for time type | number | - | 0 | - |
 | maxMinute | Maximum minute, effective for time type | number | - | 59 | - |
 | required | Form attribute, required | boolean | - | false | - |
+| marker-side | Position of the required marker | 'before' \| 'after' | - | 'before' | $LOWEST_VERSION$ |
 | size | Set picker size | string | large | - | - |
 | label-width | Set left title width | string | - | 33% | - |
 | error | Whether in error state, right content is red in error state | boolean | - | false | - |
@@ -313,8 +318,8 @@ const displayFormatTabLabel = (items) => {
 | rules | Form validation rules, used with `wd-form` component | `FormItemRule []` | - | `[]` | - |
 | immediate-change | Whether to trigger the picker-view's change event immediately when the finger is released. If not enabled, the change event will be triggered after the scrolling animation ends. Available from version 1.2.25, only supported on WeChat Mini Program and Alipay Mini Program. | boolean | - | false | 1.2.25 |
 | use-second | Whether to display the second selection, only effective for time and datetime types | boolean | - | false | 1.10.0 |
-| clearable | Show clear button | boolean | - | false | $LOWEST_VERSION$ |
-| root-portal | Whether to detach from the page, used to solve various fixed positioning issues | boolean | - | false | $LOWEST_VERSION$ |
+| clearable | Show clear button | boolean | - | false | 1.11.0 |
+| root-portal | Whether to detach from the page, used to solve various fixed positioning issues | boolean | - | false | 1.11.0 |
 
 ### FormItemRule Data Structure
 
@@ -332,7 +337,7 @@ const displayFormatTabLabel = (items) => {
 | confirm | Triggered when clicking right button | `{ value }`, value is the timestamp of currently selected date, or string for 'time' type | - |
 | cancel | Triggered when clicking left button | - | - |
 | toggle | In range selection mode, triggered when switching tab labels | Currently selected value of the switched picker | - |
-| clear | Triggered when clicking clear button | - | $LOWEST_VERSION$ |
+| clear | Triggered when clicking clear button | - | 1.11.0 |
 
 ## Methods
 

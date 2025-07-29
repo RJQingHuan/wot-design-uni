@@ -361,7 +361,9 @@ describe('输入框组件', () => {
       }
     })
 
-    expect(wrapper.find('.wd-input__label').classes()).toContain('is-required')
+    // 检查必填星号存在（默认在前面）
+    expect(wrapper.find('.wd-input__required--left').exists()).toBe(true)
+    expect(wrapper.find('.wd-input__required--left').text()).toBe('*')
   })
 
   // 测试点击事件
@@ -524,5 +526,52 @@ describe('输入框组件', () => {
 
     // 初始值应该被截断
     expect(getVM(wrapper).inputValue).toBe('12345')
+  })
+
+  // 测试 markerSide 属性
+  test('markerSide 属性 - before', () => {
+    const wrapper = mount(WdInput, {
+      props: {
+        label: '标签',
+        required: true,
+        markerSide: 'before'
+      }
+    })
+
+    expect(wrapper.props('markerSide')).toBe('before')
+    // 检查必填星号在前面
+    expect(wrapper.find('.wd-input__required--left').exists()).toBe(true)
+    expect(wrapper.find('.wd-input__required--left').text()).toBe('*')
+  })
+
+  test('markerSide 属性 - after', () => {
+    const wrapper = mount(WdInput, {
+      props: {
+        label: '标签',
+        required: true,
+        markerSide: 'after'
+      }
+    })
+
+    expect(wrapper.props('markerSide')).toBe('after')
+    // 检查必填星号在后面（没有 --left 类）
+    expect(wrapper.find('.wd-input__required').exists()).toBe(true)
+    expect(wrapper.find('.wd-input__required--left').exists()).toBe(false)
+    expect(wrapper.find('.wd-input__required').text()).toBe('*')
+  })
+
+  test('markerSide 默认值', () => {
+    const wrapper = mount(WdInput, {
+      props: {
+        label: '标签',
+        required: true
+      }
+    })
+
+    // 默认值应该是 'before'
+    expect(wrapper.props('markerSide')).toBe('before')
+    // 检查必填星号在前面
+    expect(wrapper.find('.wd-input__required--left').exists()).toBe(true)
+    expect(wrapper.find('.wd-input__required--left').text()).toBe('*')
   })
 })

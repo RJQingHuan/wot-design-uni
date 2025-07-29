@@ -247,13 +247,15 @@ Set the `label-key` property to customize the key name of the option label.
 | size | Size | string | - | - |
 | error | Whether to be in error state | boolean | false | - |
 | error-message | Error message | string | - | - |
+| required | Whether to display the required asterisk | boolean | false | - |
+| marker-side | Position of the required marker | 'before' \| 'after' | 'before' | $LOWEST_VERSION$ |
 | align | Alignment of right content | string | 'left' | - |
 | before-confirm | Validation function before confirming | function | - | - |
 | display-format | Display format function | function | - | - |
 | close-on-click-modal | Whether to close when clicking modal | boolean | true | - |
 | safe-area-inset-bottom | Whether to enable bottom safe area adaptation | boolean | true | - |
-| root-portal | Whether to detach from the page, used to solve various fixed positioning issues | boolean | false | $LOWEST_VERSION$ |
-| clearable | Show clear button | boolean | false | $LOWEST_VERSION$ |
+| root-portal | Whether to detach from the page, used to solve various fixed positioning issues | boolean | false | 1.11.0 |
+| clearable | Show clear button | boolean | false | 1.11.0 |
 
 ## Events
 
@@ -264,7 +266,7 @@ Set the `label-key` property to customize the key name of the option label.
 | change | Triggered when value changes | value | - |
 | focus | Triggered when focusing | - | - |
 | blur | Triggered when blurring | - | - |
-| clear | Triggered when clicking clear button | - | $LOWEST_VERSION$ |
+| clear | Triggered when clicking clear button | - | 1.11.0 |
 
 ## Methods
 

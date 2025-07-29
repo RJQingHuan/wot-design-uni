@@ -425,6 +425,7 @@ function handleConfirm({ value }) {
 | label-width | 设置左侧标题宽度 | string | - | 33% | - |
 | error | 是否为错误状态，错误状态时右侧内容为红色 | boolean | - | false | - |
 | required | 必填样式 | boolean | - | false | - |
+| marker-side | 必填标记位置 | string | before / after | before | $LOWEST_VERSION$ |
 | center | 是否垂直居中 | boolean | - | false | - |
 | ellipsis | 是否超出隐藏 | boolean | - | false | - |
 | align-right | 选择器的值靠右展示 | boolean | - | false | - |
@@ -438,8 +439,8 @@ function handleConfirm({ value }) {
 | rules | 表单验证规则，结合`wd-form`组件使用 | `FormItemRule []` | - | `[]` | - |
 | immediate-change | type 为 'datetime' 或 'datetimerange' 时有，是否在手指松开时立即触发 picker-view 的 change 事件。若不开启则会在滚动动画结束后触发 change 事件，1.2.25 版本起提供，仅微信小程序和支付宝小程序支持。 | boolean | - | false | 1.2.25 |
 | with-cell | 是否使用内置 cell 选择器 | boolean | - | true | 1.5.0 |
-| clearable | 显示清空按钮 | boolean | - | false | $LOWEST_VERSION$ |
-| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | $LOWEST_VERSION$ |
+| clearable | 显示清空按钮 | boolean | - | false | 1.11.0 |
+| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | 1.11.0 |
 
 ### FormItemRule 数据结构
 
@@ -458,7 +459,7 @@ function handleConfirm({ value }) {
 | change   | 点击面板日期时触发                   | `{ value }`               | -        |
 | cancel   | 点击关闭按钮或者蒙层时触发           | -           | -        |
 | open     | 日历打开时触发             | -           | -        |
-| clear    | 点击清空按钮时触发             | -           | $LOWEST_VERSION$        |
+| clear    | 点击清空按钮时触发             | -           | 1.11.0        |
 
 ## Methods
 

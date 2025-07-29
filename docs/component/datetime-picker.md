@@ -197,6 +197,10 @@ const filter = (type, values) => {
 
 设置 `before-confirm` 函数，在用户点击`确定`按钮时，会执行 `before-confirm` 函数，并传入 `value`(time 类型为字符串，其他为时间戳，当picker为区间选择时，`value`为数组) 、 `resolve` 和 `picker` 参数，可以对 `value` 进行校验，并通过 `resolve` 函数告知组件是否确定通过，`resolve` 接受1个 boolean 值，`resolve(true)` 表示选项通过，`resolve(false)` 表示选项不通过，不通过时不会关闭 `picker`弹窗。可以通过 `picker` 参数直接设置 `loading` 等属性。
 
+:::tip 提示
+在调用 `resolve` 之前须确保 `picker` 参数 `loading` 的加载状态为 `false` ，否则无法正确触发组件的 `@confirm` 事件。
+:::
+
 ```html
 <wd-toast></wd-toast>
 <wd-datetime-picker label="before-confirm" v-model="value" :before-confirm="beforeConfirm" @confirm="handleConfirm" />
@@ -303,6 +307,7 @@ const displayFormatTabLabel = (items) => {
 | minMinute | 最小分钟，time类型时生效 | number | - | 0 | - |
 | maxMinute | 最大分钟，time类型时生效 | number | - | 59 | - |
 | required | 表单属性，必填 | boolean | - | false | - |
+| marker-side | 必填标记位置 | string | before / after | before | $LOWEST_VERSION$ |
 | size | 设置选择器大小 | string | large | - | - |
 | label-width | 设置左侧标题宽度 | string | - | 33% | - |
 | error | 是否为错误状态，错误状态时右侧内容为红色 | boolean | - | false | - |
@@ -318,8 +323,8 @@ const displayFormatTabLabel = (items) => {
 | rules | 表单验证规则，结合`wd-form`组件使用	 | `FormItemRule []`	 | - | `[]` | - |
 | immediate-change | 是否在手指松开时立即触发picker-view的 change 事件。若不开启则会在滚动动画结束后触发 change 事件，1.2.25版本起提供，仅微信小程序和支付宝小程序支持。 | boolean | - | false | 1.2.25 |
 | use-second | 是否显示秒选择，仅在 time 和 datetime 类型下生效 | boolean | - | false | 1.10.0 |
-| clearable | 显示清空按钮 | boolean | - | false | $LOWEST_VERSION$ |
-| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | $LOWEST_VERSION$ |
+| clearable | 显示清空按钮 | boolean | - | false | 1.11.0 |
+| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | 1.11.0 |
 
 ### FormItemRule 数据结构
 
@@ -337,7 +342,7 @@ const displayFormatTabLabel = (items) => {
 | confirm | 点击右侧按钮触发 | `{ value }`, value 为当前选中日期的时间戳，'time' 类型则为字符串 | - |
 | cancel | 点击左侧按钮触发 | - | - |
 | toggle | 在区域选择模式下，tab标签切换时触发 | 切换到当前picker选中的值 | - |
-| clear | 点击清空按钮触发 | - | $LOWEST_VERSION$ |
+| clear | 点击清空按钮触发 | - | 1.11.0 |
 
 ## Methods
 

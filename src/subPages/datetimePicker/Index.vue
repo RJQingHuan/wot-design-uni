@@ -15,6 +15,7 @@
         <wd-datetime-picker label="before-confirm" v-model="value8" :before-confirm="beforeConfirm" @confirm="handleConfirm8" />
         <wd-datetime-picker :label="$t('cuo-wu')" v-model="value9" error @confirm="handleConfirm9" />
         <wd-datetime-picker :label="$t('bi-tian')" v-model="value10" required @confirm="handleConfirm10" />
+        <wd-datetime-picker :label="$t('bi-tian-xing-hao-zai-you-ce')" v-model="value20" required marker-side="after" @confirm="handleConfirm20" />
         <wd-datetime-picker :label="$t('mo-ren-ri-qi')" v-model="value2" :default-value="value2" />
         <wd-datetime-picker
           :label="$t('shi-jian-fan-wei-yi-nian')"
@@ -69,6 +70,12 @@
         :display-format-tab-label="displayFormatTabLabel"
       />
     </demo-block>
+    <demo-block title="超出隐藏" transparent>
+      <wd-cell-group border>
+        <wd-datetime-picker label="日期选择器超出隐藏" v-model="valueEllipsis" ellipsis @confirm="handleConfirmEllipsis" />
+        <wd-datetime-picker label="日期区间超出隐藏" v-model="valueRangeEllipsis" ellipsis @confirm="handleConfirmRangeEllipsis" />
+      </wd-cell-group>
+    </demo-block>
     <wd-toast />
   </page-wraper>
 </template>
@@ -104,8 +111,11 @@ const value16 = ref(Date.now())
 const value17 = ref(Date.now())
 const value18 = ref(Date.now())
 const value19 = ref('09:20:26')
+const value20 = ref<number>(Date.now())
 const valueClear1 = ref<number>(Date.now())
 const valueClear2 = ref<any[]>([Date.now(), Date.now()])
+const valueEllipsis = ref<number>(Date.now())
+const valueRangeEllipsis = ref<any[]>([Date.now(), Date.now() + 7 * 24 * 60 * 60 * 1000])
 const minDate = ref<number>(Date.now())
 const maxDate = ref<number>(new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate()).getTime())
 
@@ -219,6 +229,9 @@ function handleConfirm15({ value }: any) {
 function handleConfirm16({ value }: any) {
   console.log(value)
 }
+function handleConfirm20({ value }: any) {
+  console.log(value)
+}
 
 function handleClear1() {
   console.log('datetime picker 1 cleared')
@@ -235,6 +248,15 @@ function handleClear2() {
 function handleConfirmClear2({ value }: any) {
   console.log('datetime picker 2 confirmed:', value)
 }
+
+function handleConfirmEllipsis({ value }: any) {
+  console.log('ellipsis datetime picker confirmed:', value)
+}
+
+function handleConfirmRangeEllipsis({ value }: any) {
+  console.log('range ellipsis datetime picker confirmed:', value)
+}
+
 /** picker触发cancel事件，同步触发cancel事件 */
 function onCancel() {}
 </script>

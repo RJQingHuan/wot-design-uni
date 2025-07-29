@@ -258,6 +258,7 @@ Enable `use-default-slot` and use the default slot to customize the picker trigg
 | label-width | Left-side label width | string | - | 33% | - |
 | error | Error state (displays value in red) | boolean | - | false | - |
 | required | Required field style | boolean | - | false | - |
+| marker-side | Position of the required marker | 'before' \| 'after' | - | 'before' | $LOWEST_VERSION$ |
 | align-right | Right-align the picker value | boolean | - | false | - |
 | use-label-slot | Use label slot | boolean | - | false | - |
 | use-default-slot | Use default slot | boolean | - | false | - |
@@ -269,8 +270,8 @@ Enable `use-default-slot` and use the default slot to customize the picker trigg
 | prop | Form model field name (required for form validation) | string | - | - | - |
 | rules | Form validation rules (used with `wd-form`) | `FormItemRule []` | - | `[]` | - |
 | immediate-change | Trigger picker-view change event immediately on touch release (supported in WeChat Mini Program and Alipay Mini Program from v1.2.25) | boolean | - | false | 1.2.25 |
-| clearable | Show clear button | boolean | - | false | $LOWEST_VERSION$ |
-| root-portal | Detach from page to resolve fixed positioning issues | boolean | - | false | $LOWEST_VERSION$ |
+| clearable | Show clear button | boolean | - | false | 1.11.0 |
+| root-portal | Detach from page to resolve fixed positioning issues | boolean | - | false | 1.11.0 |
 
 ### FormItemRule Structure
 
@@ -288,7 +289,7 @@ Enable `use-default-slot` and use the default slot to customize the picker trigg
 | confirm    | Triggered on confirm button click | { value, selectedItems }, where `value` is the selected value (array for multi-column), and `selectedItems` is the selected option(s) | -               |
 | cancel     | Triggered on cancel button click | -                                                                                                        | -               |
 | open       | Triggered when picker popup opens | -                                                                                                        | -               |
-| clear      | Triggered on clear button click | -                                                                                                        | $LOWEST_VERSION$ |
+| clear      | Triggered on clear button click | -                                                                                                        | 1.11.0 |
 
 ## Methods
 
