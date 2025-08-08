@@ -1,0 +1,53 @@
+@import '../../common/abstracts/variable';
+@import '../../common/abstracts/mixin';
+
+.wot-theme-dark {
+  @include b(month-panel) {
+    @include e(weeks) {
+      box-shadow: 0px 4px 8px 0 rgba(255, 255, 255, 0.02);
+      color: $-dark-color;
+    }
+  }
+}
+
+@include b(month-panel) {
+
+  @include e(header) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: $-calendar-panel-padding;
+    box-sizing: border-box;
+  }
+
+  @include e(header-title) {
+    font-size: $-fs-title;
+    flex: auto;
+    text-align: center;
+  }
+
+  @include e(header-button) {
+    color: $-color-theme;
+    padding: 4px 8px;
+  }
+
+  @include e(weeks) {
+    display: flex;
+    height: $-calendar-week-height;
+    line-height: $-calendar-week-height;
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.02);
+    color: $-calendar-week-color;
+    font-size: $-calendar-week-fs;
+    padding: $-calendar-panel-padding;
+  }
+
+  @include e(week) {
+    flex: 1;
+    text-align: center;
+  }
+
+  @include e(swiper) {
+    padding: $-calendar-panel-padding;
+  }
+}

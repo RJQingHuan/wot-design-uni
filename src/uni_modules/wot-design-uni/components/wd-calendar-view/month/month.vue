@@ -3,7 +3,6 @@
     <wd-toast selector="wd-month" />
     <view class="month">
       <view class="wd-month">
-        <view class="wd-month__title" v-if="showTitle">{{ monthTitle(date) }}</view>
         <view class="wd-month__days">
           <view
             v-for="(item, index) in days"
@@ -11,7 +10,6 @@
             :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${
               item.type ? dayTypeClass(item.type) : ''
             }`"
-            :style="index === 0 ? firstDayStyle : ''"
             @click="handleDateClick(index)"
           >
             <view class="wd-month__day-container">
@@ -43,7 +41,6 @@ import wdToast from '../../wd-toast/wd-toast.vue'
 import { computed, ref, watch, type CSSProperties } from 'vue'
 import {
   compareDate,
-  formatMonthTitle,
   getDateByDefaultTime,
   getDayByOffset,
   getDayOffset,
@@ -80,18 +77,6 @@ const dayTypeClass = computed(() => {
   }
 })
 
-const monthTitle = computed(() => {
-  return (date: number) => {
-    return formatMonthTitle(date)
-  }
-})
-
-const firstDayStyle = computed(() => {
-  const dayStyle: CSSProperties = {}
-  dayStyle.marginLeft = `${(100 / 7) * offset.value}%`
-  return objToStyle(dayStyle)
-})
-
 const isLastRow = (date: number) => {
   const currentDate = new Date(date)
   const currentDay = currentDate.getDate()
@@ -101,7 +86,7 @@ const isLastRow = (date: number) => {
   return Math.ceil((offset.value + currentDay) / 7) === totalRows
 }
 watch(
-  [() => props.type, () => props.date, () => props.value, () => props.minDate, () => props.maxDate, () => props.formatter],
+  [() => props.type, () => props.date, () => props.value, () => props.formatter],
   () => {
     setDays()
   },
@@ -116,21 +101,28 @@ function setDays() {
   const date = new Date(props.date)
   const year = date.getFullYear()
   const month = date.getMonth()
-  const totalDay = getMonthEndDay(year, month + 1)
   let value = props.value
   if ((props.type === 'week' || props.type === 'weekrange') && value) {
     value = getWeekValue()
   }
+  const startDate = new Date(year, month, 1 - offset.value)
 
-  for (let day = 1; day <= totalDay; day++) {
-    const date = new Date(year, month, day).getTime()
-    let type: CalendarDayType = getDayType(date, value as number | number[] | null)
-    if (!type && compareDate(date, Date.now()) === 0) {
+  for (let i = 0; i < 42; i++) {
+    const date = new Date(startDate)
+    date.setDate(startDate.getDate() + i)
+
+    let type: CalendarDayType = getDayType(date.getTime(), value as number | number[] | null)
+    if (!type && compareDate(date.getTime(), Date.now()) === 0) {
       type = 'current'
     }
-    const dayObj = getFormatterDate(date, day, type)
+    const dayObj = getFormatterDate(date.getTime(), date.getDate(), type)
+    if (date.getMonth() !== month) {
+      dayObj.disabled = true
+      dayObj.type = ''
+    }
     dayList.push(dayObj)
   }
+
   days.value = dayList
 }
 function getDayType(date: number, value: number | number[] | null): CalendarDayType {
@@ -262,10 +254,6 @@ function handleDateClick(index: number) {
 function getDate(date: number, isEnd: boolean = false) {
   date = props.defaultTime && props.defaultTime.length > 0 ? getDateByDefaultTime(date, isEnd ? props.defaultTime[1] : props.defaultTime[0]) : date
 
-  if (date < props.minDate) return props.minDate
-
-  if (date > props.maxDate) return props.maxDate
-
   return date
 }
 
@@ -371,7 +359,7 @@ function getFormatterDate(date: number, day: string | number, type?: CalendarDay
     topInfo: '',
     bottomInfo: '',
     type,
-    disabled: compareDate(date, props.minDate) === -1 || compareDate(date, props.maxDate) === 1,
+    disabled: false,
     isLastRow: isLastRow(date)
   }
   if (props.formatter) {

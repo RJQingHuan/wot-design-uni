@@ -33,7 +33,8 @@ onThemeChange((option) => {
 
 onLaunch(() => {
   const systemInfo = uni.getSystemInfoSync()
-  darkMode.setDark(systemInfo.theme === 'dark')
+  // darkMode.setDark(systemInfo.theme === 'dark')
+  darkMode.setDark(false)
 })
 onShow(() => {
   console.log('App Show')
